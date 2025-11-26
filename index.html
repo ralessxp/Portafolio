@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portafolio - Luis Arenas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #050816;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(5, 8, 22, 0.85);
+      border-bottom: 1px solid #111827;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left span {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: #a5b4fc;
+    }
+
+    .nav-right a {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .nav-right a:hover {
+      color: #e5e7eb;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid #111827;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      color: #f9fafb;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #d1d5db;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.2fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-title span {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a5b4fc;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      color: #9ca3af;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      border-color: #4f46e5;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #e5e7eb;
+      border-color: #374151;
+    }
+
+    .btn-ghost:hover {
+      background: #111827;
+    }
+
+    .hero-card {
+      border-radius: 1.2rem;
+      border: 1px solid #1f2937;
+      padding: 1.5rem;
+      background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.2), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(14, 116, 144, 0.18), transparent 55%),
+                  #020617;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-card-main {
+      font-size: 1.05rem;
+      color: #e5e7eb;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-sub {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-card-items {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .pill {
+      padding: 0.45rem 0.6rem;
+      border-radius: 0.9rem;
+      border: 1px solid #1f2937;
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .pill-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6b7280;
+    }
+
+    .pill-value {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .card {
+      border-radius: 1rem;
+      border: 1px solid #1f2937;
+      padding: 1.1rem 1rem;
+      background: #020617;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      color: #9ca3af;
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header p {
+      max-width: 900px;
+      font-size: 0.95rem;
+    }
+
+    .experience-item {
+      margin-bottom: 1rem;
+    }
+
+    .experience-item span {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .contact-box {
+      max-width: 520px;
+      border-radius: 1rem;
+      border: 1px solid #1f2937;
+      padding: 1.5rem;
+      background: #020617;
+    }
+
+    .contact-row {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-row strong {
+      display: inline-block;
+      width: 90px;
+      color: #9ca3af;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      border-top: 1px solid #111827;
+      background: #020617;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      header {
+        position: static;
+      }
+
+      .nav-right {
+        display: none;
+      }
+
+      section {
+        padding: 2.3rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="nav-left">
+      <span>luis arenas • full stack</span>
+    </div>
+    <div class="nav-right">
+      <a href="#about">Sobre mi</a>
+      <a href="#skills">Stack</a>
+      <a href="#projects">Proyectos</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#contact">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div>
+      <div class="hero-title">
+        <span>desarrollador full stack</span>
+        <h1>Hola, soy Luis Arenas</h1>
+      </div>
+      <p class="hero-subtitle">
+        Full Stack Developer con enfoque en backend. Trabajo con Node.js, NestJS y Angular,
+        construyendo APIs, integraciones y soluciones orientadas a resultados.
+      </p>
+
+      <div class="hero-tags">
+        <div class="tag">Node.js • NestJS</div>
+        <div class="tag">Angular</div>
+        <div class="tag">.NET / .NET Core</div>
+        <div class="tag">APIs REST</div>
+        <div class="tag">Bases de datos relacionales</div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">Ver proyectos</a>
+        <a href="#contact" class="btn-ghost">Contactar</a>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <div class="hero-card-title">perfil profesional</div>
+      <div class="hero-card-main">
+        Desarrollador Full Stack con experiencia en aplicaciones web y APIs.
+      </div>
+      <div class="hero-card-sub">
+        Enfocado en escribir codigo claro, mantenible y alineado al negocio.
+      </div>
+      <div class="hero-card-items">
+        <div class="pill">
+          <span class="pill-label">stack principal</span>
+          <span class="pill-value">Node.js, NestJS, Angular</span>
+        </div>
+        <div class="pill">
+          <span class="pill-label">backend extra</span>
+          <span class="pill-value">.NET, .NET Core</span>
+        </div>
+        <div class="pill">
+          <span class="pill-label">bases de datos</span>
+          <span class="pill-value">Oracle, SQL relacional</span>
+        </div>
+        <div class="pill">
+          <span class="pill-label">otras skills</span>
+          <span class="pill-value">APIs, analitica, mejores practicas</span>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section id="about">
+    <div class="section-header">
+      <h2>Sobre mi</h2>
+      <p>
+        Soy analista programador titulado y me especializo en desarrollo Full Stack. Me gusta trabajar el backend con Node.js, NestJS y .NET, y complementar con Angular en el frontend. 
+        Valoro escribir código limpio, entender el negocio y entregar soluciones que realmente se usen.
+      </p>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="skills">
+    <div class="section-header">
+      <h2>Stack y tecnologias</h2>
+      <p>
+        Estas son algunas de las herramientas y tecnologias con las que trabajo de forma habitual.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Backend</h3>
+        <p>
+          Desarrollo de APIs y servicios con Node.js, NestJS y .NET / .NET Core,
+          aplicando buenas practicas y arquitectura modular.
+        </p>
+        <div class="chips">
+          <span class="chip">Node.js</span>
+          <span class="chip">NestJS</span>
+          <span class="chip">.NET</span>
+          <span class="chip">.NET Core</span>
+          <span class="chip">REST</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Frontend</h3>
+        <p>
+          Construccion de interfaces con Angular, componentes reutilizables y consumo de APIs,
+          cuidando estructura y experiencia de usuario.
+        </p>
+        <div class="chips">
+          <span class="chip">Angular</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Bases de datos y cloud</h3>
+        <p>
+          Manejo de bases de datos relacionales, consultas, vistas y procedimientos. Experiencia
+          integrando servicios en entornos cloud.
+        </p>
+        <div class="chips">
+          <span class="chip">Oracle</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Relacional</span>
+          <span class="chip">AWS / GCP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="projects">
+    <div class="section-header">
+      <h2>Proyectos destacados</h2>
+      <p>
+        Algunos ejemplos de proyectos donde he aplicado mi stack full stack.
+      </p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Plataforma de gestion de clientes</h3>
+            <p>
+            Aplicacion full stack para gestionar clientes, contratos y estados, con APIs en NestJS
+            y frontend en Angular. Incluye autenticacion, roles y panel para visualizar informacion
+            clave del negocio.
+            </p>
+            <div class="chips">
+            <span class="chip">NestJS</span>
+            <span class="chip">Angular</span>
+            <span class="chip">JWT</span>
+            <span class="chip">REST API</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Modulo de medios de pago</h3>
+            <p>
+            Desarrollo e integracion de un modulo de pagos online, conectando la aplicacion con
+            pasarelas de pago mediante APIs. Manejo de validacion de transacciones, retornos y
+            manejo de errores para mantener la experiencia estable.
+            </p>
+            <div class="chips">
+            <span class="chip">Node.js</span>
+            <span class="chip">APIs</span>
+            <span class="chip">Pagos online</span>
+            <span class="chip">Seguridad</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Servicios backend para reportes</h3>
+            <p>
+            Conjunto de endpoints para exponer datos hacia dashboards y reportes, optimizando
+            consultas y estructura de datos para mejorar tiempos de respuesta y consumo desde
+            herramientas externas.
+            </p>
+            <div class="chips">
+            <span class="chip">.NET Core</span>
+            <span class="chip">SQL</span>
+            <span class="chip">APIs</span>
+            <span class="chip">Reporting</span>
+            </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- EXPERIENCIA -->
+<section id="experience">
+  <div class="section-header">
+    <h2>Experiencia</h2>
+    <p>
+      Experiencia como desarrollador Full Stack construyendo aplicaciones web, APIs, integraciones
+      y modulos backend con foco en rendimiento, estabilidad y mantenibilidad.
+    </p>
+  </div>
+
+  <div class="experience-item">
+    <h3>Full Stack Developer</h3>
+    <span>Node.js · NestJS · Angular · APIs REST · Bases de datos relacionales</span>
+    <p>
+      Desarrollo de funcionalidades completas end to end, construccion de APIs con NestJS,
+      integracion de servicios, autenticacion, manejo de roles, consumo de APIs desde Angular
+      y mantenimiento general de plataformas web. Implementacion de buenas practicas,
+      modularizacion y estructuras escalables para proyectos en crecimiento.
+    </p>
+  </div>
+
+  <div class="experience-item">
+    <h3>Backend Developer</h3>
+    <span>.NET / .NET Core · SQL · Integracion de servicios · Arquitectura limpia</span>
+    <p>
+      Construccion y optimizacion de servicios backend, creacion de endpoints, manejo de datos,
+      validaciones, procedimientos SQL, refactorizacion de modulos y soporte a funcionalidades
+      criticas del negocio. Enfoque en rendimiento y estabilidad para plataformas en produccion.
+    </p>
+  </div>
+
+  <div class="experience-item">
+    <h3>Integracion de medios de pago</h3>
+    <span>Node.js · APIs · Transacciones · Seguridad · Pagos online</span>
+    <p>
+      Integracion de pasarelas de pago mediante APIs seguras, validacion de transacciones,
+      manejo de retornos, control de errores y procesos de conciliacion. Experiencia aplicando
+      flujos de pagos online y estructuras necesarias para mantener operaciones confiables.
+    </p>
+  </div>
+</section>
+
+  <!-- CONTACTO -->
+  <section id="contact">
+    <div class="section-header">
+      <h2>Contacto</h2>
+      <p>
+        Si quieres que conversemos sobre alguna oportunidad, proyecto o colaboracion,
+        puedes contactarme directamente.
+      </p>
+    </div>
+
+    <div class="contact-box">
+      <h3>Hablemos</h3>
+      <p>
+        Estoy abierto a roles como Full Stack Developer o Backend Developer, en modalidad remota o hibrida.
+      </p>
+
+      <div class="contact-row">
+        <strong>Email</strong> <span>l.elicer.aa@gmail.com</span>
+      </div>
+      <div class="contact-row">
+        <strong>LinkedIn</strong> <span>https://www.linkedin.com/in/luis-arenas-655255276</span>
+      </div>
+      <div class="contact-row">
+        <strong>GitHub</strong> <span>https://github.com/ralessxp</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Luis Arenas. Todos los derechos reservados.
+</footer>
+
+<script>
+  // Año actual en el footer
+  var yearSpan = document.getElementById("year");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+</script>
+
+</body>
+</html>
